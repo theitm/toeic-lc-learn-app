@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import java.util.List;
+import java.util.UUID;
 
 import com.example.demo.model.PartStructEntity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,7 @@ public class PartStructService implements IPartStructService {
     }
 
     @Override
-    public PartStructEntity findOne(long id) {
+    public PartStructEntity findOne(UUID id) {
         return partStructRepository.findOne(id);
     }
 

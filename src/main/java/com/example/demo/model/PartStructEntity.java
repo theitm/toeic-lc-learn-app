@@ -33,6 +33,5 @@ public class PartStructEntity {
 	private UUID id;
 
 	private int part;
-	private int numOfQuestionsOldType;
-	private int numOfQuestionsNewType;
+	private int numOfQuestions;
 }

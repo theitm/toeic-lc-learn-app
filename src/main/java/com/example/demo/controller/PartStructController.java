@@ -15,6 +15,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.example.demo.model.PartStructEntity;
 import com.example.demo.service.IPartStructService;
 
+import java.util.UUID;
+
 @Controller
 public class PartStructController {
 	@Autowired
@@ -33,7 +35,7 @@ public class PartStructController {
 	}
 
 	@GetMapping("/partStruct/{id}/edit")
-	public String edit(@PathVariable int id, Model model) {
+	public String edit(@PathVariable UUID id, Model model) {
 		model.addAttribute("partStruct", IPartStructService.findOne(id));
 		return "form";
 	}
@@ -44,15 +46,15 @@ public class PartStructController {
 			return "form";
 		}
 		IPartStructService.save(partStruct);
-		redirect.addFlashAttribute("success", "Saved partStruct successfully!");
+		redirect.addFlashAttribute("success", "Lưu cấu trúc câu hỏi thành công!");
 		return "redirect:/partStruct";
 	}
 
 	@GetMapping("/partStruct/{id}/delete")
-	public String delete(@PathVariable long id, RedirectAttributes redirect) {
+	public String delete(@PathVariable UUID id, RedirectAttributes redirect) {
 		PartStructEntity emp = IPartStructService.findOne(id);
 		IPartStructService.delete(emp);
-		redirect.addFlashAttribute("success", "Deleted partStruct successfully!");
+		redirect.addFlashAttribute("success", "Đã xóa cấu trúc câu hỏi!");
 		return "redirect:/partStruct";
 	}
 

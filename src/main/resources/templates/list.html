@@ -37,8 +37,7 @@
 						<tr>
 							<th>No</th>
 							<th>Part</th>
-							<th>Số câu hỏi (format cũ)</th>
-							<th>Số câu hỏi (format mới)</th>
+							<th>Số câu hỏi</th>
 							<th>Edit</th>
 							<th>Delete</th>
 						</tr>
@@ -47,8 +46,7 @@
 						<tr th:each="struct,iterStat : ${partStructs}">
 							<td th:text="${iterStat.count}"></td>
 							<td th:text="${struct.part}"></td>
-							<td th:text="${struct.numOfQuestionsOldType}"></td>
-							<td th:text="${struct.numOfQuestionsNewType}"></td>
+							<td th:text="${struct.numOfQuestions}"></td>
 							<td><a th:href="@{/partStruct/{id}/edit(id=${struct.id})}"><span
 									class="glyphicon glyphicon-pencil"></span></a></td>
 							<td><a th:href="@{/partStruct/{id}/delete(id=${struct.id})}"><span

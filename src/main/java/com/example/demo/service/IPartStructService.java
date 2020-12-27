@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import java.util.List;
+import java.util.UUID;
 
 import com.example.demo.model.PartStructEntity;
 
@@ -9,7 +10,7 @@ public interface IPartStructService {
 
     List<PartStructEntity> search(String q);
 
-    PartStructEntity findOne(long id);
+    PartStructEntity findOne(UUID id);
 
     void save(PartStructEntity emp);
 
