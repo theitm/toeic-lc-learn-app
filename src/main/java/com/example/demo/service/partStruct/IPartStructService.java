@@ -1,9 +1,9 @@
-package com.example.demo.service;
+package com.example.demo.service.partStruct;
+
+import com.example.demo.model.PartStructEntity;
 
 import java.util.List;
 import java.util.UUID;
-
-import com.example.demo.model.PartStructEntity;
 
 public interface IPartStructService {
 	Iterable<PartStructEntity> findAll();

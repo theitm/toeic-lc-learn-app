@@ -14,11 +14,11 @@
 			<span th:text="${success}"></span>
 		</div>
 		<div class="row">
-			<a th:href="@{/partStruct/create}" class="btn btn-success pull-left">
+			<a th:href="@{/partstruct/create}" class="btn btn-success pull-left">
 				<span class="glyphicon glyphicon-plus"></span> Thêm cấu trúc câu hỏi
 			</a>
 <!--			<form class="form-inline pull-right" action="#"-->
-<!--				th:action="@{/partStruct/search}" method="GET">-->
+<!--				th:action="@{/partstruct/search}" method="GET">-->
 <!--				<div class="form-group">-->
 <!--					<input type="text" class="form-control" name="s"-->
 <!--						placeholder="Type partStruct name..." />-->
@@ -47,9 +47,9 @@
 							<td th:text="${iterStat.count}"></td>
 							<td th:text="${struct.part}"></td>
 							<td th:text="${struct.numOfQuestions}"></td>
-							<td><a th:href="@{/partStruct/{id}/edit(id=${struct.id})}"><span
+							<td><a th:href="@{/partstruct/{id}/edit(id=${struct.id})}"><span
 									class="glyphicon glyphicon-pencil"></span></a></td>
-							<td><a th:href="@{/partStruct/{id}/delete(id=${struct.id})}"><span
+							<td><a th:href="@{/partstruct/{id}/delete(id=${struct.id})}"><span
 									class="glyphicon glyphicon-trash"></span></a></td>
 						</tr>
 					</tbody>

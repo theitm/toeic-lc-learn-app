@@ -1,7 +1,7 @@
 package com.example.demo.controller;
 
-import javax.validation.Valid;
-
+import com.example.demo.model.PartStructEntity;
+import com.example.demo.service.partStruct.IPartStructService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,59 +12,68 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.example.demo.model.PartStructEntity;
-import com.example.demo.service.IPartStructService;
-
+import javax.validation.Valid;
 import java.util.UUID;
 
 @Controller
 public class PartStructController {
 	@Autowired
-	private IPartStructService IPartStructService;
-
-	@GetMapping("/partStruct")
-	public String index(Model model) {
-		model.addAttribute("partStructs", IPartStructService.findAll());
-		return "list";
+	private IPartStructService partStructService;
+	// Đón nhận request GET
+	@GetMapping("/") // Nếu người dùng request tới địa chỉ "/"
+	public String index() {
+		return "index"; // Trả về file index.html
 	}
 
-	@GetMapping("/partStruct/create")
+	@GetMapping("/partstruct")
+	public String listPartStruct(Model model) {
+		model.addAttribute("partStructs", partStructService.findAll());
+		return "listPartStruct";
+	}
+
+	@GetMapping("/partstruct/structQuestions")
+	public String index(Model model) {
+		model.addAttribute("partStructs", partStructService.findAll());
+		return "structQuestions";
+	}
+
+	@GetMapping("/partstruct/create")
 	public String create(Model model) {
 		model.addAttribute("partStruct", new PartStructEntity());
-		return "form";
+		return "formCRUDPartStruct";
 	}
 
-	@GetMapping("/partStruct/{id}/edit")
+	@GetMapping("/partstruct/{id}/edit")
 	public String edit(@PathVariable UUID id, Model model) {
-		model.addAttribute("partStruct", IPartStructService.findOne(id));
-		return "form";
+		model.addAttribute("partStruct", partStructService.findOne(id));
+		return "formCRUDPartStruct";
 	}
 
-	@PostMapping("/partStruct/save")
+	@PostMapping("/partstruct/save")
 	public String save(@Valid PartStructEntity partStruct, BindingResult result, RedirectAttributes redirect) {
 		if (result.hasErrors()) {
-			return "form";
+			return "formCRUDPartStruct";
 		}
-		IPartStructService.save(partStruct);
+		partStructService.save(partStruct);
 		redirect.addFlashAttribute("success", "Lưu cấu trúc câu hỏi thành công!");
-		return "redirect:/partStruct";
+		return "redirect:/partstruct";
 	}
 
-	@GetMapping("/partStruct/{id}/delete")
+	@GetMapping("/partstruct/{id}/delete")
 	public String delete(@PathVariable UUID id, RedirectAttributes redirect) {
-		PartStructEntity emp = IPartStructService.findOne(id);
-		IPartStructService.delete(emp);
+		PartStructEntity emp = partStructService.findOne(id);
+		partStructService.delete(emp);
 		redirect.addFlashAttribute("success", "Đã xóa cấu trúc câu hỏi!");
-		return "redirect:/partStruct";
+		return "redirect:/partstruct";
 	}
 
-	@GetMapping("/partStruct/search")
+	@GetMapping("/partstruct/search")
 	public String search(@RequestParam("s") String s, Model model) {
 		if (s.equals("")) {
-			return "redirect:/partStruct";
+			return "redirect:/partstruct";
 		}
 
-		model.addAttribute("partStructs", IPartStructService.search(s));
-		return "list";
+		model.addAttribute("partStructs", partStructService.search(s));
+		return "listPartStruct";
 	}
 }

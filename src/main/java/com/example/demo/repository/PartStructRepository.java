@@ -1,14 +1,14 @@
 package com.example.demo.repository;
 
-import java.util.List;
-import java.util.UUID;
-
+import com.example.demo.model.PartStructEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.example.demo.model.PartStructEntity;
+import java.util.List;
+import java.util.UUID;
 
 public interface PartStructRepository extends JpaRepository<PartStructEntity, UUID> {
 
     List<PartStructEntity> findByPartContaining(String q);
+    List<PartStructEntity> findTop10ByOrderByPartAsc();
 
 }

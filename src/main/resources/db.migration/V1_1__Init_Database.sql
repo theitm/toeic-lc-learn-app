@@ -2,15 +2,11 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- ----------------------------
 -- Table structure for part_struct
 -- ----------------------------
-CREATE TABLE `questions`  (
-                              `id` char(36) NOT NULL COLLATE 'utf8_general_ci',
-                              `groupQuestionsId` char(36) NOT NULL COLLATE 'utf8_general_ci',
-                              `title` varchar(1024) NOT NULL DEFAULT 0,
-                              `titleTranslate` varchar(1024) NOT NULL DEFAULT 0,
-                              PRIMARY KEY (`id`) USING BTREE,
-                              INDEX `FK__group_questions_questions` (`groupQuestionsId`) USING BTREE,
-                              CONSTRAINT `FK__group_questions_questions` FOREIGN KEY (`groupQuestionsId`)
-                                  REFERENCES `group_questions` (`id`) ON UPDATE CASCADE ON DELETE CASCADE
+CREATE TABLE `part_struct` (
+                               `id` char(36) NOT NULL,
+                               `numOfQuestions` int NOT NULL,
+                               `part` int NOT NULL,
+                               PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 -- ----------------------------
 -- ----------------------------

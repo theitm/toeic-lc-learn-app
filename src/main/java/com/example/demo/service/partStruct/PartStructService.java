@@ -1,13 +1,12 @@
-package com.example.demo.service;
-
-import java.util.List;
-import java.util.UUID;
+package com.example.demo.service.partStruct;
 
 import com.example.demo.model.PartStructEntity;
+import com.example.demo.repository.PartStructRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.repository.PartStructRepository;
+import java.util.List;
+import java.util.UUID;
 
 @Service
 public class PartStructService implements IPartStructService {
@@ -16,7 +15,7 @@ public class PartStructService implements IPartStructService {
 
     @Override
     public Iterable<PartStructEntity> findAll() {
-        return partStructRepository.findAll();
+        return partStructRepository.findTop10ByOrderByPartAsc();
     }
 
     @Override
@@ -26,7 +25,7 @@ public class PartStructService implements IPartStructService {
 
     @Override
     public PartStructEntity findOne(UUID id) {
-        return partStructRepository.findOne(id);
+        return partStructRepository.findById(id).orElse(null);
     }
 
     @Override
