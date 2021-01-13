@@ -28,9 +28,9 @@ public class QuestionsEntity {
 	@Type(type="uuid-char")
 	private UUID groupQuestionsId;
 
-	@ManyToOne
-	@JoinColumn(name = "groupQuestionsId", insertable=false, updatable=false)
-	private GroupQuestionsEntity groupQuestionsEntity;
+//	@ManyToOne
+//	@JoinColumn(name = "groupQuestionsId", insertable=false, updatable=false)
+//	private GroupQuestionsEntity groupQuestionsEntity;
 
 	private String title;
 	private String titleTranslate;

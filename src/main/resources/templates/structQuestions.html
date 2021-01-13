@@ -43,7 +43,7 @@
         </th:block>
         <th:block th:unless="${#lists.isEmpty(partStructs)}">
             <tr th:each="struct,iterStat : ${partStructs}">
-                <a type="button" th:href="@{/questions}" class="btn btn-success btn-lg btn-block" th:text="${struct.part}"></a>
+                <a type="button" th:href="@{/testsession/{id}/generate(id=${struct.id})}" class="btn btn-success btn-lg btn-block" th:text="${struct.part}"></a>
             </tr>
         </th:block>
     </div>

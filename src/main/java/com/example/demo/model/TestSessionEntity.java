@@ -25,14 +25,14 @@ public class TestSessionEntity {
 	@Type(type="uuid-char")
 	private UUID id;
 
-	private String session;
+	private String sessions;
 
 	@Type(type="uuid-char")
 	private UUID questionId;
 
-	@ManyToOne
-	@JoinColumn(name = "questionId", insertable=false, updatable=false)
-	private QuestionsEntity questionsEntity;
+//	@ManyToOne
+//	@JoinColumn(name = "questionId", insertable=false, updatable=false)
+//	private QuestionsEntity questionsEntity;
 
 	private String labelChosen;
 
@@ -40,5 +40,5 @@ public class TestSessionEntity {
 
 //	private String fullName;
 
-	private int index;
+	private int stt;
 }

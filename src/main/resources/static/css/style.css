@@ -38,3 +38,28 @@
 	clip: rect(0,0,0,0);
 	pointer-events: none;
 }
+
+img {
+	display: block;
+	margin: 0 auto;
+	width: 75%;
+}
+
+audio {
+	display: block;
+	margin: 0 auto;
+	width: 75%;
+}
+
+button.center {
+	display: block;
+	margin: 0 auto;
+	/*width: 75%;*/
+}
+
+footer {
+	clear: both;
+	position: relative;
+	height: 200px;
+	margin-top: -200px;
+}

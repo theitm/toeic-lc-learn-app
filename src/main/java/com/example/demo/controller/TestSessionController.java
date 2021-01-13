@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.dto.GroupQuestionsDto;
 import com.example.demo.model.TestSessionEntity;
 import com.example.demo.service.testSession.ITestSessionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,22 +21,10 @@ public class TestSessionController {
 	@Autowired
 	private ITestSessionService testSessionService;
 
-	@GetMapping("/testsession")
-	public String index(Model model) {
-		model.addAttribute("testSessions", testSessionService.findAll());
-		return "listPartStruct";
-	}
-
-	@GetMapping("/testsession/create")
-	public String create(Model model) {
-		model.addAttribute("testSession", new TestSessionEntity());
-		return "formCRUDPartStruct";
-	}
-
 	@GetMapping("/testsession/{id}/generate")
 	public String generate(@PathVariable UUID id, Model model) {
-		model.addAttribute("testSession", testSessionService.generateTestSession(id));
-		return "formCRUDPartStruct";
+		model.addAttribute("groupQuestions", testSessionService.generateTestSession(id).get(0));
+		return "multichoice";
 	}
 
 	@GetMapping("/testsession/{id}/edit")
@@ -45,12 +34,12 @@ public class TestSessionController {
 	}
 
 	@PostMapping("/testsession/save")
-	public String save(@Valid TestSessionEntity testSession, BindingResult result, RedirectAttributes redirect) {
+	public String save(@Valid GroupQuestionsDto groupQuestionsDto, BindingResult result, RedirectAttributes redirect) {
 		if (result.hasErrors()) {
 			return "formCRUDPartStruct";
 		}
-		testSessionService.save(testSession);
-		redirect.addFlashAttribute("success", "Lưu cấu trúc câu hỏi thành công!");
+//		testSessionService.save(groupQuestionsDto);
+		redirect.addFlashAttribute("groupQuestions", "Lưu cấu trúc câu hỏi thành công!");
 		return "redirect:/testsession";
 	}
 

@@ -37,7 +37,15 @@ CREATE TABLE `part_struct` (
 
 LOCK TABLES `part_struct` WRITE;
 /*!40000 ALTER TABLE `part_struct` DISABLE KEYS */;
-INSERT INTO `part_struct` VALUES ('47b10509-b691-4440-b92e-f0abb96a6cd3',10,2),('a2daa8c4-5aaa-4882-b439-41537f25a2ba',20,3),('b75d9f72-d35f-4a36-861f-4fafae76f2ad',10,1);
+SET @part_struct_id_1_1 = 'b75d9f72-d35f-4a36-861f-4fafae76f2ad';
+SET @part_struct_id_1_2 = '47b10509-b691-4440-b92e-f0abb96a6cd3';
+SET @part_struct_id_1_3 = 'a2daa8c4-5aaa-4882-b439-41537f25a2ba';
+
+INSERT INTO `part_struct`
+VALUES
+(@part_struct_id_1_2,10,2),
+(@part_struct_id_1_3,20,3),
+(@part_struct_id_1_1,10,1);
 /*!40000 ALTER TABLE `part_struct` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -65,17 +73,33 @@ CREATE TABLE `group_questions` (
 
 LOCK TABLES `group_questions` WRITE;
 /*!40000 ALTER TABLE `group_questions` DISABLE KEYS */;
-INSERT INTO `group_questions` VALUES ('10c7ca6e-54f3-11eb-975b-444bac7a627b','b75d9f72-d35f-4a36-861f-4fafae76f2ad',1);
-INSERT INTO `group_questions` VALUES ('10c7ca6e-54f3-11eb-975b-444bac7a627b','b75d9f72-d35f-4a36-861f-4fafae76f2ad',1);
-INSERT INTO `group_questions` VALUES ('10c7ca6e-54f3-11eb-975b-444bac7a627b','b75d9f72-d35f-4a36-861f-4fafae76f2ad',1);
-INSERT INTO `group_questions` VALUES ('10c7ca6e-54f3-11eb-975b-444bac7a627b','b75d9f72-d35f-4a36-861f-4fafae76f2ad',1);
-INSERT INTO `group_questions` VALUES ('10c7ca6e-54f3-11eb-975b-444bac7a627b','b75d9f72-d35f-4a36-861f-4fafae76f2ad',1);
-INSERT INTO `group_questions` VALUES ('10c7ca6e-54f3-11eb-975b-444bac7a627b','b75d9f72-d35f-4a36-861f-4fafae76f2ad',1);
-INSERT INTO `group_questions` VALUES ('10c7ca6e-54f3-11eb-975b-444bac7a627b','b75d9f72-d35f-4a36-861f-4fafae76f2ad',1);
-INSERT INTO `group_questions` VALUES ('10c7ca6e-54f3-11eb-975b-444bac7a627b','b75d9f72-d35f-4a36-861f-4fafae76f2ad',1);
-INSERT INTO `group_questions` VALUES ('10c7ca6e-54f3-11eb-975b-444bac7a627b','b75d9f72-d35f-4a36-861f-4fafae76f2ad',1);
-INSERT INTO `group_questions` VALUES ('10c7ca6e-54f3-11eb-975b-444bac7a627b','b75d9f72-d35f-4a36-861f-4fafae76f2ad',1);
-INSERT INTO `group_questions` VALUES ('10c7ca6e-54f3-11eb-975b-444bac7a627b','b75d9f72-d35f-4a36-861f-4fafae76f2ad',1);
+-- Part 1
+SET @group_questions_id_1_1 = uuid();
+SET @group_questions_id_1_2 = uuid();
+SET @group_questions_id_1_3 = uuid();
+SET @group_questions_id_1_4 = uuid();
+SET @group_questions_id_1_5 = uuid();
+SET @group_questions_id_1_6 = uuid();
+SET @group_questions_id_1_7 = uuid();
+SET @group_questions_id_1_8 = uuid();
+SET @group_questions_id_1_9 = uuid();
+SET @group_questions_id_1_10 = uuid();
+SET @group_questions_id_1_11 = uuid();
+
+INSERT INTO `group_questions`
+VALUES
+(@group_questions_id_1_1,@part_struct_id_1_1,1),
+(@group_questions_id_1_2,@part_struct_id_1_1,1),
+(@group_questions_id_1_3,@part_struct_id_1_1,1),
+(@group_questions_id_1_4,@part_struct_id_1_1,1),
+(@group_questions_id_1_5,@part_struct_id_1_1,1),
+(@group_questions_id_1_6,@part_struct_id_1_1,1),
+(@group_questions_id_1_7,@part_struct_id_1_1,1),
+(@group_questions_id_1_8,@part_struct_id_1_1,1),
+(@group_questions_id_1_9,@part_struct_id_1_1,1),
+(@group_questions_id_1_10,@part_struct_id_1_1,1),
+(@group_questions_id_1_11,@part_struct_id_1_1,1);
+
 
 /*!40000 ALTER TABLE `group_questions` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -104,7 +128,35 @@ CREATE TABLE `media` (
 
 LOCK TABLES `media` WRITE;
 /*!40000 ALTER TABLE `media` DISABLE KEYS */;
-INSERT INTO `media` VALUES ('3d78a6da-54f5-11eb-975b-444bac7a627b','10c7ca6e-54f3-11eb-975b-444bac7a627b','https://toeic24.vn/upload/audio/part_i_intro.mp3','Audio'),('ad5b7d62-54f3-11eb-975b-444bac7a627b','10c7ca6e-54f3-11eb-975b-444bac7a627b','https://toeic24.vn/upload/img/part_1.png','Image');
+INSERT INTO `media`
+VALUES
+       -- Part 1
+       (uuid(),@group_questions_id_1_1,'https://toeic24.vn/upload/audio/part_i_intro.mp3','Audio'),
+       (uuid(),@group_questions_id_1_1,'https://toeic24.vn/upload/img/part_1.png','Image'),
+       (uuid(),@group_questions_id_1_2,'https://toeic24.vn/upload/audio/part_i_intro.mp3','Audio'),
+       (uuid(),@group_questions_id_1_2,'https://toeic24.vn/upload/img/resized/1579321422.png','Image'),
+       (uuid(),@group_questions_id_1_3,'https://toeic24.vn/upload/audio/part_i_intro.mp3','Audio'),
+       (uuid(),@group_questions_id_1_3,'https://toeic24.vn/upload/img/resized/1579321545.png','Image'),
+       (uuid(),@group_questions_id_1_4,'https://toeic24.vn/upload/audio/part_i_intro.mp3','Audio'),
+       (uuid(),@group_questions_id_1_4,'https://toeic24.vn/upload/img/resized/1579321614.png','Image'),
+       (uuid(),@group_questions_id_1_5,'https://toeic24.vn/upload/audio/part_i_intro.mp3','Audio'),
+       (uuid(),@group_questions_id_1_5,'https://toeic24.vn/upload/img/resized/1579321701.png','Image'),
+       (uuid(),@group_questions_id_1_6,'https://toeic24.vn/upload/audio/part_i_intro.mp3','Audio'),
+       (uuid(),@group_questions_id_1_6,'https://toeic24.vn/upload/img/resized/1579321809.png','Image'),
+       (uuid(),@group_questions_id_1_7,'https://toeic24.vn/upload/audio/part_i_intro.mp3','Audio'),
+       (uuid(),@group_questions_id_1_7,'https://toeic24.vn/upload/img/resized/1580434191.png','Image'),
+       (uuid(),@group_questions_id_1_8,'https://toeic24.vn/upload/audio/part_i_intro.mp3','Audio'),
+       (uuid(),@group_questions_id_1_8,'https://toeic24.vn/upload/img/resized/1580434399.png','Image'),
+       (uuid(),@group_questions_id_1_9,'https://toeic24.vn/upload/audio/part_i_intro.mp3','Audio'),
+       (uuid(),@group_questions_id_1_9,'https://toeic24.vn/upload/img/resized/1580434545.png','Image'),
+       (uuid(),@group_questions_id_1_10,'https://toeic24.vn/upload/audio/part_i_intro.mp3','Audio'),
+       (uuid(),@group_questions_id_1_10,'https://toeic24.vn/upload/img/resized/1579321898.png','Image'),
+       (uuid(),@group_questions_id_1_11,'https://toeic24.vn/upload/audio/part_i_intro.mp3','Audio'),
+       (uuid(),@group_questions_id_1_11,'https://toeic24.vn/upload/img/resized/1580434492.png','Image');
+# (uuid(),@group_questions_id_1_9,'https://toeic24.vn/upload/audio/part_i_intro.mp3','Audio'),
+# (uuid(),@group_questions_id_1_9,'https://toeic24.vn/upload/img/resized/1580434758.png','Image'),
+# (uuid(),@group_questions_id_1_9,'https://toeic24.vn/upload/audio/part_i_intro.mp3','Audio'),
+# (uuid(),@group_questions_id_1_9,'https://toeic24.vn/upload/img/resized/1580434859.png','Image');
 /*!40000 ALTER TABLE `media` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -133,7 +185,32 @@ CREATE TABLE `questions` (
 
 LOCK TABLES `questions` WRITE;
 /*!40000 ALTER TABLE `questions` DISABLE KEYS */;
-INSERT INTO `questions` VALUES ('fd6cdf56-54f5-11eb-975b-444bac7a627b','10c7ca6e-54f3-11eb-975b-444bac7a627b','Select the answer','Chọn đáp án đúng',NULL);
+-- Part 1
+SET @questions_id_1_1 = uuid();
+SET @questions_id_1_2 = uuid();
+SET @questions_id_1_3 = uuid();
+SET @questions_id_1_4 = uuid();
+SET @questions_id_1_5 = uuid();
+SET @questions_id_1_6 = uuid();
+SET @questions_id_1_7 = uuid();
+SET @questions_id_1_8 = uuid();
+SET @questions_id_1_9 = uuid();
+SET @questions_id_1_10 = uuid();
+SET @questions_id_1_11 = uuid();
+INSERT INTO `questions` 
+VALUES 
+-- Part 1
+(@questions_id_1_1,@group_questions_id_1_1,'Select the answer','Chọn đáp án đúng',NULL),
+(@questions_id_1_2,@group_questions_id_1_2,'Select the answer','Chọn đáp án đúng',NULL),
+(@questions_id_1_3,@group_questions_id_1_3,'Select the answer','Chọn đáp án đúng',NULL),
+(@questions_id_1_4,@group_questions_id_1_4,'Select the answer','Chọn đáp án đúng',NULL),
+(@questions_id_1_5,@group_questions_id_1_5,'Select the answer','Chọn đáp án đúng',NULL),
+(@questions_id_1_6,@group_questions_id_1_6,'Select the answer','Chọn đáp án đúng',NULL),
+(@questions_id_1_7,@group_questions_id_1_7,'Select the answer','Chọn đáp án đúng',NULL),
+(@questions_id_1_8,@group_questions_id_1_8,'Select the answer','Chọn đáp án đúng',NULL),
+(@questions_id_1_9,@group_questions_id_1_9,'Select the answer','Chọn đáp án đúng',NULL),
+(@questions_id_1_10,@group_questions_id_1_10,'Select the answer','Chọn đáp án đúng',NULL),
+(@questions_id_1_11,@group_questions_id_1_11,'Select the answer','Chọn đáp án đúng',NULL);
 /*!40000 ALTER TABLE `questions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -164,7 +241,62 @@ CREATE TABLE `answers` (
 
 LOCK TABLES `answers` WRITE;
 /*!40000 ALTER TABLE `answers` DISABLE KEYS */;
-INSERT INTO `answers` VALUES ('188b11b2-54f7-11eb-975b-444bac7a627b','fd6cdf56-54f5-11eb-975b-444bac7a627b','B','Lorem 2','Long 2',0),('1bc3f38a-54f7-11eb-975b-444bac7a627b','fd6cdf56-54f5-11eb-975b-444bac7a627b','D','Lorem 4','Long 4',0),('20de0b30-54f7-11eb-975b-444bac7a627b','fd6cdf56-54f5-11eb-975b-444bac7a627b','C','Lorem 3','Long 3',1),('7ae2ea98-54f6-11eb-975b-444bac7a627b','fd6cdf56-54f5-11eb-975b-444bac7a627b','A','Lorem 1','Long 1',0);
+INSERT INTO `answers`
+VALUES
+(uuid(),@questions_id_1_1,'B','Lorem 2','Đáp án 2',0),
+(uuid(),@questions_id_1_1,'D','Lorem 4','Đáp án 4',0),
+(uuid(),@questions_id_1_1,'C','Lorem 3','Đáp án 3',1),
+(uuid(),@questions_id_1_1,'A','Lorem 1','Đáp án 1',0),
+
+(uuid(),@questions_id_1_2,'B','Lorem 2','Đáp án 2',1),
+(uuid(),@questions_id_1_2,'D','Lorem 4','Đáp án 4',0),
+(uuid(),@questions_id_1_2,'C','Lorem 3','Đáp án 3',0),
+(uuid(),@questions_id_1_2,'A','Lorem 1','Đáp án 1',0),
+
+(uuid(),@questions_id_1_3,'B','Lorem 2','Đáp án 2',1),
+(uuid(),@questions_id_1_3,'D','Lorem 4','Đáp án 4',0),
+(uuid(),@questions_id_1_3,'C','Lorem 3','Đáp án 3',0),
+(uuid(),@questions_id_1_3,'A','Lorem 1','Đáp án 1',0),
+
+(uuid(),@questions_id_1_4,'B','Lorem 2','Đáp án 2',0),
+(uuid(),@questions_id_1_4,'D','Lorem 4','Đáp án 4',0),
+(uuid(),@questions_id_1_4,'C','Lorem 3','Đáp án 3',1),
+(uuid(),@questions_id_1_4,'A','Lorem 1','Đáp án 1',0),
+
+(uuid(),@questions_id_1_5,'B','Lorem 2','Đáp án 2',0),
+(uuid(),@questions_id_1_5,'D','Lorem 4','Đáp án 4',1),
+(uuid(),@questions_id_1_5,'C','Lorem 3','Đáp án 3',0),
+(uuid(),@questions_id_1_5,'A','Lorem 1','Đáp án 1',0),
+
+(uuid(),@questions_id_1_6,'B','Lorem 2','Đáp án 2',0),
+(uuid(),@questions_id_1_6,'D','Lorem 4','Đáp án 4',0),
+(uuid(),@questions_id_1_6,'C','Lorem 3','Đáp án 3',0),
+(uuid(),@questions_id_1_6,'A','Lorem 1','Đáp án 1',1),
+
+(uuid(),@questions_id_1_7,'B','Lorem 2','Đáp án 2',0),
+(uuid(),@questions_id_1_7,'D','Lorem 4','Đáp án 4',0),
+(uuid(),@questions_id_1_7,'C','Lorem 3','Đáp án 3',1),
+(uuid(),@questions_id_1_7,'A','Lorem 1','Đáp án 1',0),
+
+(uuid(),@questions_id_1_8,'B','Lorem 2','Đáp án 2',0),
+(uuid(),@questions_id_1_8,'D','Lorem 4','Đáp án 4',0),
+(uuid(),@questions_id_1_8,'C','Lorem 3','Đáp án 3',1),
+(uuid(),@questions_id_1_8,'A','Lorem 1','Đáp án 1',0),
+
+(uuid(),@questions_id_1_9,'B','Lorem 2','Đáp án 2',0),
+(uuid(),@questions_id_1_9,'D','Lorem 4','Đáp án 4',0),
+(uuid(),@questions_id_1_9,'C','Lorem 3','Đáp án 3',1),
+(uuid(),@questions_id_1_9,'A','Lorem 1','Đáp án 1',0),
+
+(uuid(),@questions_id_1_10,'B','Lorem 2','Đáp án 2',0),
+(uuid(),@questions_id_1_10,'D','Lorem 4','Đáp án 4',1),
+(uuid(),@questions_id_1_10,'C','Lorem 3','Đáp án 3',0),
+(uuid(),@questions_id_1_10,'A','Lorem 1','Đáp án 1',0),
+
+(uuid(),@questions_id_1_11,'B','Lorem 2','Đáp án 2',1),
+(uuid(),@questions_id_1_11,'D','Lorem 4','Đáp án 4',0),
+(uuid(),@questions_id_1_11,'C','Lorem 3','Đáp án 3',0),
+(uuid(),@questions_id_1_11,'A','Lorem 1','Đáp án 1',0);
 /*!40000 ALTER TABLE `answers` ENABLE KEYS */;
 UNLOCK TABLES;
 
