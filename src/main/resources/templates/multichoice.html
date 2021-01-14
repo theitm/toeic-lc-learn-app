@@ -46,28 +46,28 @@
         <div class="row">
             <form action="#" th:action="@{/testsession/save}" th:object="${groupQuestions}"
                   method="POST" >
-<!--                <div th:each="groupQuestion : ${groupQuestions}">-->
+                <div th:each="groupQuestion : ${groupQuestions}">
 
-                <img th:src="*{media.imgUrl}" >
+                <img th:src="${groupQuestion.media.imgUrl}" >
                 <audio controls>
-                    <source th:src="*{media.audioUrl}" type="audio/mpeg">
+                    <source th:src="${groupQuestion.media.audioUrl}" type="audio/mpeg">
                 </audio>
-                <tr th:each="ques : *{questions}">
-                    <input type="hidden" th:field="${ques.id}" />
+                <tr th:each="ques : ${groupQuestion.cauhoi}">
+<!--                    <input type="hidden" th:field="${ques.getId()}" />-->
 
-                <label th:text ="${ques.title}"></label>
-<!--                            <div class="btn-toolbar" role="toolbar">-->
-<!--                                <div class="hide-radio" role="group" data-toggle="buttons">-->
-<!--                                    <div class="btn-group-vertical">-->
-<!--                                        <tr th:each="answer : ${question.getAnswers()}">-->
-<!--                                            <label class="btn btn-default">-->
-<!--                                                <input type="radio" name="options" id="option1" autocomplete="off" th:text ="${answer.getAnswer()}"  checked="">-->
-<!--                                            </label>-->
-<!--                                        </tr>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                    </div>-->
+                <label th:text ="${ques.getTitle()}"></label>
+                            <div class="btn-toolbar" role="toolbar">
+                                <div class="hide-radio" role="group" data-toggle="buttons">
+                                    <div class="btn-group-vertical">
+                                        <div th:each="answer : ${ques.getAnswers()}">
+                                            <label class="btn btn-default">
+                                                <input type="radio" name="options" th:id="${answer.getId()}" th:text ="${answer.getAnswer()}"  checked="">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
 
                 </tr>
                 <tr>

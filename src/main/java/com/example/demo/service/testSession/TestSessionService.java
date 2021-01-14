@@ -131,7 +131,7 @@ public class TestSessionService implements ITestSessionService {
                 index++;
             }
             //Thêm nhóm câu hỏi vào mảng trả về
-            groupQuestionsDtos.add(GroupQuestionsDto.builder().questions(questions).media(mediaDto).build());
+            groupQuestionsDtos.add(GroupQuestionsDto.builder().cauhoi(questions).media(mediaDto).build());
 
         }
         return groupQuestionsDtos;

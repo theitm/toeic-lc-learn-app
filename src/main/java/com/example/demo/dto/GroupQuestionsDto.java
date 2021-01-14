@@ -13,6 +13,6 @@ import java.util.List;
 @Data
 @Builder
 public class GroupQuestionsDto {
-	private List<QuestionDto> questions;
+	private List<QuestionDto> cauhoi;
 	private MediaDto media;
 }
