@@ -44,36 +44,35 @@
     <div class="col-6 col-md-4">
 
         <div class="row">
-            <form action="#" th:action="@{/testsession/save}" th:object="${groupQuestions}"
-                  method="POST" >
-<!--                <div th:each="groupQuestion : ${groupQuestions}">-->
+            <form action="#" th:action="@{/testsession/save}" th:object="${groupQuestion}">
+                <!--                <div th:each="groupQuestion : ${groupQuestions}">-->
 
                 <img th:src="*{media.imgUrl}" >
                 <audio controls>
                     <source th:src="*{media.audioUrl}" type="audio/mpeg">
                 </audio>
-                <tr th:each="ques : *{questions}">
-                    <input type="hidden" th:field="${ques.id}" />
+                <div th:each="ques : *{questions}">
+                    <!--                    <input type="hidden" th:field="${ques.id}" />-->
 
-                <label th:text ="${ques.title}"></label>
-<!--                            <div class="btn-toolbar" role="toolbar">-->
-<!--                                <div class="hide-radio" role="group" data-toggle="buttons">-->
-<!--                                    <div class="btn-group-vertical">-->
-<!--                                        <tr th:each="answer : ${question.getAnswers()}">-->
-<!--                                            <label class="btn btn-default">-->
-<!--                                                <input type="radio" name="options" id="option1" autocomplete="off" th:text ="${answer.getAnswer()}"  checked="">-->
-<!--                                            </label>-->
-<!--                                        </tr>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                    </div>-->
+                    <label th:text ="${ques.title}"></label>
+                    <div class="btn-toolbar" role="toolbar">
+                        <div class="hide-radio" role="group" data-toggle="buttons">
+                            <div class="btn-group-vertical">
+                                <div th:each="answer : ${ques.getAnswers()}">
+                                    <label class="btn btn-default">
+                                        <input type="radio" name="options" id="option1" autocomplete="off" th:text ="${answer.getAnswer()}"  checked="">
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-                </tr>
-                <tr>
+                <p>
                     <button type="submit" class="btn btn-primary center">Save</button>
-                </tr>
+                </p>
             </form>
+
         </div>
     </div>
     <div class="col-6 col-md-4"></div>

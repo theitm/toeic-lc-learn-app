@@ -309,11 +309,11 @@ DROP TABLE IF EXISTS `test_session`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `test_session` (
   `id` char(36) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `session` varchar(60) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `sessions` varchar(60) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `questionId` char(36) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `labelChosen` char(1) NOT NULL,
+  `labelChosen` char(1) NULL,
   `result` tinyint(1) NOT NULL DEFAULT '0',
-  `index` int NOT NULL,
+  `stt` int NOT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   KEY `FK__questions_test_session` (`questionId`) USING BTREE,
   CONSTRAINT `FK__questions_test_session` FOREIGN KEY (`questionId`) REFERENCES `questions` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
