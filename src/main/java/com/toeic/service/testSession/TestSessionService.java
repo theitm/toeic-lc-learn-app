@@ -89,6 +89,7 @@ public class TestSessionService implements ITestSessionService {
             groupQuestionsOfThisPart = groupQuestionsOfThisPart.subList(0, neededGroup);
         }
         //Tạo list test
+        int index = 1;
         for(GroupQuestionsEntity groupQuestionsEntity : groupQuestionsOfThisPart) {
             UUID groupQuestionId = groupQuestionsEntity.getId();
             //Get danh sách các câu hỏi của nhóm
@@ -104,7 +105,6 @@ public class TestSessionService implements ITestSessionService {
             }
             //Tạo danh sách câu hỏi
             List<QuestionDto> questions = new ArrayList<>();
-            int index = 1;
             for (QuestionsEntity questionsEntity : questionsEntities) {
                 //Lấy danh sách câu trả lời
                 List<AnswerDto> answers = new ArrayList<>();

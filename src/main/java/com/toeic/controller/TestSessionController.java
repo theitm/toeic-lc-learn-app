@@ -23,7 +23,7 @@ public class TestSessionController {
 
 	@GetMapping("/testsession/{id}/generate")
 	public String generate(@PathVariable UUID id, Model model) {
-		model.addAttribute("groupQuestion", testSessionService.generateTestSession(id).get(0));
+		model.addAttribute("groupQuestions", testSessionService.generateTestSession(id));
 		return "multichoice";
 	}
 
